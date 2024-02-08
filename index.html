@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista de Tarefas</title>
+<style>
+    .completed {
+        text-decoration: line-through;
+    }
+    #listaTarefas {
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<h1>Lista de Tarefas</h1>
+<form id="formTarefa">
+    <input type="text" id="inputTarefa" placeholder="Digite sua tarefa" required>
+    <button type="submit">Adicionar Tarefa</button>
+</form>
+<ol id="listaTarefas">
+    <!-- Itens da lista de tarefas serão adicionados aqui -->
+</ol>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Adiciona uma nova tarefa à lista
+        $('#formTarefa').submit(function(event) {
+            event.preventDefault();
+            var novaTarefa = $('#inputTarefa').val();
+            $('#listaTarefas').append('<li>' + novaTarefa + '</li>');
+            $('#inputTarefa').val(''); // Limpa o campo de entrada
+        });
+
+        // Adiciona o efeito de linha através do clique
+        $(document).on('click', 'li', function() {
+            $(this).toggleClass('completed');
+        });
+    });
+</script>
+
+</body>
+</html>
